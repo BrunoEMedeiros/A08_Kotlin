@@ -1,4 +1,4 @@
-package com.example.a08ex04
+package com.example.a08ex05
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
-import com.example.a08ex04.api.Endpoint
-import com.example.a08ex04.models.User
-import com.example.a08ex04.models.UserResponse
-import com.example.a08ex04.utils.NetworkUtils
+import com.example.a08ex05.api.Endpoint
+import com.example.a08ex05.models.User
+import com.example.a08ex05.models.UserResponse
+import com.example.a08ex05.utils.NetworkUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +54,10 @@ class MainActivity : AppCompatActivity() {
                 val users: List<User> = response.body()!!.results
 
                 // busca os emails de todos os usuários
-                val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1, users.map{it.name})
+                val adapter = ArrayAdapter(
+                    applicationContext,
+                    android.R.layout.simple_list_item_1,
+                    users.map { it.name.first + " " + it.name.last })
 
                 // Conectando o adapter à ListView
                 val listView = findViewById<ListView>(R.id.listView)
